@@ -9,13 +9,13 @@ import {
 } from "./ui/dialog";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
-import { Tasks } from "@/generated/prisma";
+import { Task } from "@prisma/client";
 import { useState } from "react";
 import { editTask } from "@/actions/edit-task";
 import { toast } from "sonner";
 
 type TaskProps = {
-  task: Tasks;
+  task: Task;
   handleGetTasks: () => Promise<void>;
 };
 

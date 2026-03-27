@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Tasks } from "@/generated/prisma";
+import { Task } from "@prisma/client";
 import { getTasks } from "@/actions/get-tasks-from-bd";
 import { NewTask } from "@/actions/add-tasks";
 import { DeleteTask } from "@/actions/delete-tasks";
@@ -11,11 +11,11 @@ import { toast } from "sonner";
 import { FilterType } from "@/components/filter-badges";
 
 export const useTasks = () => {
-  const [taskList, setTasklist] = useState<Tasks[]>([]);
+  const [taskList, setTasklist] = useState<Task[]>([]);
   const [task, setTask] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [currentFilter, setCurrentFilter] = useState<FilterType>("all");
-  const [filteredTasks, setFilteredTasks] = useState<Tasks[]>([]);
+  const [filteredTasks, setFilteredTasks] = useState<Task[]>([]);
 
   const handleGetTasks = async () => {
     const tasks = await getTasks();
